@@ -7,48 +7,95 @@
 <script type="text/javascript">
 
 var wantsToPlay = true;
+var audio;
+var points = 0;
+
+var game = function(userInput, computerInput){
+
+		//determine who wins
+		if(userInput === computerInput){
+			alert("It's a tie!");
+		}
+		else if(userInput === "gum"){
+			if(computerInput === "sweater"){
+				alert("You win!");
+				points = (points + 1);
+			}
+			else{
+				alert("You lose!");
+			}
+		}
+		else if(userInput === "pencil"){
+			if(computerInput === "gum"){
+				alert("You win!");
+				points = (points + 1);
+			}
+			else{
+				alert("You lose!");
+			}
+		}
+		else if(userInput === "sweater"){
+			if(computerInput === "pencil"){
+				alert("You win!");
+				points = (points + 1);
+			}
+			else{
+				alert("You lose!");
+			}
+		}
+		else if(userInput === "quit"){
+				if(points <= 0){
+					audio = new Audio('boo.mp3');
+					audio.play();
+				}
+				if(points > 0){
+					audio = new Audio('applause.mp3');
+					audio.play();
+				}
+				wantsToPlay = false;
+				document.write(points);
+		}
+
+}
 
 while(wantsToPlay){
-	var userInput = prompt("Please choose one of these options: sweater, gum, pencil. sweater > pencil, gum > sweater, penicl > gum. If you want to stop playing then please type in quit");
+	var userInput = prompt("Please choose one of these options: sweater, gum, pencil. sweater > pencil, gum > sweater, pencil > gum. If you want to stop playing then please type in quit");
 
 	//make sure to lowercase the user's answer
 	userInput = userInput.toLowerCase();
 
-	document.write(userInput);
+	//error check
+	if((userInput !== "sweater") && (userInput !== "pencil") && (userInput !== "gum") && (userInput !== "quit")){
+			alert("Please type in your choice again");
+	}
 
+	//initalizing computer's choice
 	var computerInput = Math.floor(Math.random()*3);
 
 	//determine what the computer is
-	switch(computerInput){
-		case 0:
-			computerInput = "sweater";
-			break;
-		case 1:
-			computerInput = "pencil";
-		case 2:
-			computerInput = "gum";
-			break;
-	}
+		switch(computerInput){
+			case 0:
+				computerInput = "sweater";
+				break;
+			case 1:
+				computerInput = "pencil";
+				break;
+			case 2:
+				computerInput = "gum";
+				break;
+		}
+	document.write(computerInput);
 
-	//determine who wins
-	// switch(userInput){
-	// 	case "sweater"
-
-
-	// }
-
-
-
-	if(userInput == "quit"){
-			wantsToPlay = false;
-	}
-
+	game(userInput, computerInput);
 }
 
 </script>
 
 </body>
 </html>
+
+
+
 
 
 
