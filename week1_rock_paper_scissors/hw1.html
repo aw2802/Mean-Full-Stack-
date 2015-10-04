@@ -1,0 +1,55 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+var wantsToPlay = true;
+
+while(wantsToPlay){
+	var userInput = prompt("Please choose one of these options: sweater, gum, pencil. sweater > pencil, gum > sweater, penicl > gum. If you want to stop playing then please type in quit");
+
+	//make sure to lowercase the user's answer
+	userInput = userInput.toLowerCase();
+
+	document.write(userInput);
+
+	var computerInput = Math.floor(Math.random()*3);
+
+	//determine what the computer is
+	switch(computerInput){
+		case 0:
+			computerInput = "sweater";
+			break;
+		case 1:
+			computerInput = "pencil";
+		case 2:
+			computerInput = "gum";
+			break;
+	}
+
+	//determine who wins
+	// switch(userInput){
+	// 	case "sweater"
+
+
+	// }
+
+
+
+	if(userInput == "quit"){
+			wantsToPlay = false;
+	}
+
+}
+
+</script>
+
+</body>
+</html>
+
+
+
+
